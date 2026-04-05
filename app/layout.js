@@ -17,7 +17,7 @@ const dancing = Dancing_Script({
 });
 
 export const metadata = {
-  title: "Grid & Drip | Café",
+  title: "CoCo | Café",
   description: "A cinematic, scroll-driven web experience for waffles and pancakes.",
 };
 
