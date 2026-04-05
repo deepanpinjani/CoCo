@@ -21,90 +21,90 @@ export default function Page() {
   useEffect(() => {
     let ctx = gsap.context(() => {
       // Exact requested GSAP animation for the hero image (reduced scale)
-    gsap.fromTo(".waffle-hero-img",
-      { scale: 1.15 },
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top top",
-          end: "60% top",
-          scrub: 1.5,
-        }
-      }
-    );
-
-    // Section 2: Pinning timeline
-    const explosionTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top top",
-        end: "100% top", 
-        scrub: 0.5,
-        pin: true,
-      }
-    });
-
-    // Particle explosion
-    particlesRef.current.forEach((el, i) => {
-      // Reduced travel distance and scale
-      const angle = (Math.random() * Math.PI) * 2;
-      const originalDistance = 300 + Math.random() * 200; 
-      const tx = Math.cos(angle) * originalDistance;
-      const ty = Math.sin(angle) * originalDistance;
-      const rot = Math.random() * 720 - 360;
-
-      explosionTl.to(el, {
-        x: tx,
-        y: ty,
-        rotation: rot,
-        opacity: 1,
-        scale: 0.3, // Greatly reduced size
-        ease: "power2.out",
-        duration: 3
-      }, 0); 
-    });
-
-    // Fade out text instructions
-    explosionTl.to(heroRef.current, {
-      opacity: 0,
-      y: -50,
-      duration: 1
-    }, 0);
-
-    // Section 3: Flavor Cards
-    gsap.fromTo(cardsRef.current, 
-      { y: 100, opacity: 0 },
-      { 
-        y: 0, opacity: 1, 
-        duration: 1.2, 
-        stagger: 0.2, 
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "#flavor-section",
-          start: "top 70%",
-        }
-      }
-    );
-
-    // Section 4: Scroll List
-    listItemsRef.current.forEach((item, i) => {
-      gsap.fromTo(item,
-        { y: 80, opacity: 0 },
+      gsap.fromTo(".waffle-hero-img",
+        { scale: 1 },
         {
-          y: 0, opacity: 1,
-          duration: 1.5,
-          ease: "power2.out",
+          scale: 0.85,
+          ease: "none",
           scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-            end: "top 40%",
-            scrub: 1
+            trigger: ".hero-section",
+            start: "top top",
+            end: "60% top",
+            scrub: 1.5,
           }
         }
       );
-    });
+
+      // Section 2: Pinning timeline
+      const explosionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "100% top",
+          scrub: 0.5,
+          pin: true,
+        }
+      });
+
+      // Particle explosion
+      particlesRef.current.forEach((el, i) => {
+        // Reduced travel distance and scale
+        const angle = (Math.random() * Math.PI) * 2;
+        const originalDistance = 300 + Math.random() * 200;
+        const tx = Math.cos(angle) * originalDistance;
+        const ty = Math.sin(angle) * originalDistance;
+        const rot = Math.random() * 720 - 360;
+
+        explosionTl.to(el, {
+          x: tx,
+          y: ty,
+          rotation: rot,
+          opacity: 1,
+          scale: 0.3, // Greatly reduced size
+          ease: "power2.out",
+          duration: 3
+        }, 0);
+      });
+
+      // Fade out text instructions
+      explosionTl.to(heroRef.current, {
+        opacity: 0,
+        y: -50,
+        duration: 1
+      }, 0);
+
+      // Section 3: Flavor Cards
+      gsap.fromTo(cardsRef.current,
+        { y: 100, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#flavor-section",
+            start: "top 70%",
+          }
+        }
+      );
+
+      // Section 4: Scroll List
+      listItemsRef.current.forEach((item, i) => {
+        gsap.fromTo(item,
+          { y: 80, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 80%",
+              end: "top 40%",
+              scrub: 1
+            }
+          }
+        );
+      });
 
       gsap.fromTo(reviewsRef.current,
         { y: 50, opacity: 0, scale: 0.95 },
@@ -128,13 +128,13 @@ export default function Page() {
 
   return (
     <main className="w-full bg-black min-h-screen text-white overflow-hidden font-sans">
-      
+
       {/* HEADER: CAFE COCO */}
       <header className="absolute top-0 left-0 w-full px-8 py-6 z-50 flex justify-center md:justify-between items-center pointer-events-none">
-        
+
         {/* LOGO CONTAINER HTML RECREATION */}
         <div className="relative flex flex-col items-center justify-center w-40 h-40 pointer-events-auto opacity-90 hover:opacity-100 transition-opacity">
-          
+
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -144,20 +144,20 @@ export default function Page() {
                 <stop offset="100%" stopColor="#fbf5b7" />
               </linearGradient>
             </defs>
-            <circle 
-              cx="50" 
-              cy="53" 
-              r="34" 
-              fill="none" 
-              stroke="url(#goldGrad)" 
-              strokeWidth="1.3" 
-              strokeDasharray="80 30" 
-              strokeDashoffset="10" 
+            <circle
+              cx="50"
+              cy="53"
+              r="34"
+              fill="none"
+              stroke="url(#goldGrad)"
+              strokeWidth="1.3"
+              strokeDasharray="80 30"
+              strokeDashoffset="10"
               strokeLinecap="round"
-              transform="rotate(-20 50 50)" 
+              transform="rotate(-20 50 50)"
             />
           </svg>
-          
+
           <div className="flex flex-col items-center z-10">
             <span className="font-script text-6xl tracking-tight leading-none" style={{
               background: "linear-gradient(135deg, #bf953f 0%, #fcf6ba 40%, #b38728 80%, #fbf5b7 100%)",
@@ -181,41 +181,41 @@ export default function Page() {
 
       {/* SECTION 1 & 2: HERO & EXPLOSION */}
       <section ref={scrollExplosionRef} className="hero-section relative w-full h-screen flex items-center justify-center overflow-hidden">
-        
+
         {/* The single high-res hero image */}
         <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-            <Image 
-              src="/waffle-hero.png" 
-              alt="Cinematic Waffle Hero" 
-              fill
-              className="waffle-hero-img object-contain md:object-cover origin-center"
-              style={{
-                willChange: "transform",
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-                transformOrigin: "center center",
-                imageRendering: "-webkit-optimize-contrast"
-              }}
-              priority
-            />
+          <Image
+            src="/waffle-hero.png"
+            alt="Cinematic Waffle Hero"
+            fill
+            className="waffle-hero-img object-contain md:object-cover origin-center"
+            style={{
+              willChange: "transform",
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              transformOrigin: "center center",
+              imageRendering: "-webkit-optimize-contrast"
+            }}
+            priority
+          />
         </div>
 
         {/* Particles flying out (initially hidden/centered) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 pointer-events-none mix-blend-screen">
           {Array.from({ length: 8 }).map((_, i) => (
-             <div 
-               key={i} 
-               ref={el => particlesRef.current[i] = el}
-               className="absolute w-24 h-24 opacity-0 drop-shadow-2xl"
-             >
-                <Image 
-                  src={i % 3 === 0 ? "/assets/chocolate1.png" : i % 3 === 1 ? "/assets/chocolate2.png" : "/assets/ice_shard.png"} 
-                  alt="particle" 
-                  fill 
-                  className="object-contain" 
-                  priority
-                />
-             </div>
+            <div
+              key={i}
+              ref={el => particlesRef.current[i] = el}
+              className="absolute w-24 h-24 opacity-0 drop-shadow-2xl"
+            >
+              <Image
+                src={i % 3 === 0 ? "/assets/chocolate1.png" : i % 3 === 1 ? "/assets/chocolate2.png" : "/assets/ice_shard.png"}
+                alt="particle"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           ))}
         </div>
 
@@ -235,7 +235,7 @@ export default function Page() {
             COMPLEX PROFILE
           </h2>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { title: "Indulgent", desc: "A deep, satisfying richness that overtakes the senses." },
@@ -243,7 +243,7 @@ export default function Page() {
             { title: "Warm", desc: "Served dripping with perfectly heated Vermont maple." },
             { title: "Crispy", desc: "A satisfying outer crunch giving way to a soft center." }
           ].map((card, idx) => (
-            <div 
+            <div
               key={idx}
               ref={el => cardsRef.current[idx] = el}
               className="bg-[#111111] p-10 flex flex-col gap-4 border border-white/5 rounded-sm"
@@ -268,7 +268,7 @@ export default function Page() {
             { tag: "03", title: "Warm Maple Syrup", desc: "Pure Vermont grade A" },
             { tag: "04", title: "Chocolate Chips", desc: "Belcolade semi-sweet" }
           ].map((item, idx) => (
-            <div 
+            <div
               key={idx}
               ref={el => listItemsRef.current[idx] = el}
               className="relative flex flex-col md:flex-row items-baseline gap-6 md:gap-12"
@@ -277,7 +277,7 @@ export default function Page() {
               <div className="absolute -left-10 -top-20 md:-top-32 font-serif text-[120px] md:text-[200px] font-black text-white/[0.03] select-none pointer-events-none tracking-tighter z-0">
                 {item.tag}
               </div>
-              
+
               <div className="text-[#e8c97a] font-mono text-sm tracking-layout z-10 opacity-70">
                 {item.tag} /
               </div>
@@ -302,7 +302,7 @@ export default function Page() {
             { quote: "It looks like modern art and tastes even better. A sensory experience.", name: "MARCUS T.", role: "PRIVATE CHEF" },
             { quote: "Grid & Drip has redefined the dessert cafe aesthetic. Stunning.", name: "ELENA R.", role: "ARCHITECTURAL DIGEST" }
           ].map((rev, idx) => (
-            <div 
+            <div
               key={idx}
               ref={el => reviewsRef.current[idx] = el}
               className="flex flex-col gap-6 p-8 relative"
