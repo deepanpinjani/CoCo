@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-script: var(--font-dancing);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #e8c97a;
+  color: #000;
+}
