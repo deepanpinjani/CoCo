@@ -188,7 +188,7 @@ export default function Page() {
             src="/waffle-hero.png"
             alt="Cinematic Waffle Hero"
             fill
-            className="waffle-hero-img object-contain md:object-cover origin-center"
+            className="waffle-hero-img object-contain origin-center"
             style={{
               willChange: "transform",
               backfaceVisibility: "hidden",
