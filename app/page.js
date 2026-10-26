@@ -174,8 +174,8 @@ export default function Page() {
         </div>
 
         <nav className="hidden md:flex gap-12 text-[#e8c97a] text-[10px] tracking-[0.3em] uppercase font-bold pointer-events-auto">
-          <a href="#" className="hover:text-white transition-colors duration-300">Menu</a>
-          <a href="#" className="hover:text-white transition-colors duration-300">Story</a>
+          <a href="/menu" className="hover:text-white transition-colors duration-300">Menu</a>
+          <a href="#flavor-section" className="hover:text-white transition-colors duration-300">Story</a>
         </nav>
       </header>
 
@@ -330,7 +330,7 @@ export default function Page() {
             ₹149
           </h2>
         </div>
-        <button className="bg-[#e8c97a] text-black px-12 py-5 text-sm uppercase tracking-[0.3em] font-bold hover:bg-white transition-colors duration-500 rounded-sm">
+        <button onClick={() => (window.location.href = "/menu")} className="bg-[#e8c97a] text-black px-12 py-5 text-sm uppercase tracking-[0.3em] font-bold hover:bg-white transition-colors duration-500 rounded-sm">
           Order Now
         </button>
         <p className="text-white/40 text-xs md:text-sm tracking-widest font-light">
